@@ -7,7 +7,12 @@
  */
 function campuscms_feature_contact_install() {
   // Change the url of the contact form.
-  path_save(array('source' => 'contact', 'alias' => 'contact-us'));
+  $alias = array(
+    'source' => 'contact',
+    'alias' => 'contact-us',
+  );
+
+  path_save($alias);
   
   drupal_set_message(t('Please go to @url to configure your contact form', array('@url' => url('admin/structure/contact', array('absolute' => TRUE)))));
 }
