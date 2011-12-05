@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the contact feature.
+ */
+function campuscms_feature_contact_install() {
+  // Change the url of the contact form.
+  path_save(array('source' => 'contact', 'alias' => 'contact-us'));
+}
