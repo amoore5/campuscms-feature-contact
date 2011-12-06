@@ -14,5 +14,5 @@ function campuscms_feature_contact_install() {
 
   path_save($alias);
   
-  drupal_set_message(t('Please go to @url to configure your contact form', array('@url' => url('admin/structure/contact', array('absolute' => TRUE)))));
+  drupal_set_message(t('Please go to @url to configure your contact form', array('@url' => l('contact configuration page', 'admin/structure/contact'))));
 }
