@@ -3,4 +3,24 @@
  * @file
  */
 
-// Drupal needs this blank file.
+/**
+ * Implements hook_modules_installed().
+ */
+function campuscms_feature_contact_modules_installed($modules) {
+  if (in_array('custom_breadcrumbs_paths', $modules)) {
+    _campuscms_feature_contact_custom_breadcrumbs_paths();
+  }
+}
+
+// Create some breadcrumbs
+function _campuscms_feature_contact_custom_breadcrumbs_paths() {
+  // Add the breadcrumb for the contact page.
+  $breadcrumb = new stdClass();
+  $breadcrumb->name = 'campuscms_feature_contact-paths-contact-us';
+  $breadcrumb->titles = array('Contact Us');
+  $breadcrumb->paths = array('<none>');
+  $breadcrumb->visibility_php = '';
+  $breadcrumb->specific_path = 'contact-us';
+
+  _custom_breadcrumbs_save_breadcrumb('custom_breadcrumbs_paths', 'paths', $breadcrumb);
+}

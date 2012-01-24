@@ -14,5 +14,18 @@ function campuscms_feature_contact_install() {
 
   path_save($alias);
 
+  if (module_exists('custom_breadcrumbs_paths')) {
+    _campuscms_feature_contact_custom_breadcrumbs_paths();
+  }
+
   drupal_set_message(t('Please go to !url to configure your contact form', array('!url' => l('contact configuration page', 'admin/structure/contact'))));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function campuscms_feature_contact_uninstall() {
+  if (module_exists('custom_breadcrumbs_paths')) {
+    db_delete('custom_breadcrumbs_paths')->condition('name', 'campuscms_feature_contact-%', 'LIKE')->execute();
+  }
 }
